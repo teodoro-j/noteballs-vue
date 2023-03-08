@@ -29,6 +29,7 @@
      v-for='note in notes'
      :key='note.id'
      :note="note"
+     @deleteClicked="deletarNota"
     />
   </div>
 </template>
@@ -39,16 +40,7 @@ import Note from '../components/Notes/Note.vue';
 
 const newNote = ref('');
 const newNoteRef = ref(null);
-const notes = ref([
-    {
-        id: 'id1',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctoet, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.'
-    },
-    {
-        id: 'id2',
-        content: 'Esta nota é menor! Yup!'
-    }
-]);
+const notes = ref([]);
 
 const addNote = () => {
     let atualDate= new Date().getTime( );
@@ -62,6 +54,11 @@ const addNote = () => {
     notes.value.unshift(note);
     newNote.value = '';
     newNoteRef.value.focus();
+}
 
+const deletarNota = idToDelete => {
+    notes.value = notes.value.filter(note => {
+        return note.id !== idToDelete
+    })
 }
 </script>

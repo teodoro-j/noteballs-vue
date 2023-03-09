@@ -1,30 +1,25 @@
 <template>
   <div class="notes">
-
-    <div class="card has-background-grey-lighter mb-5 p-4">
-        <div class="field">
-          <div class="control">
-            <textarea 
-             v-model="newNote"
-             class="textarea" 
-             placeholder="Nova nota" 
-             ref="newNoteRef"
-            >
-            </textarea>
-          </div>
-        </div>
-    
-        <div class="field is-grouped is-grouped-right">
-          <div class="control">
-            <button 
-             @click="addNote"
-             :disabled="!newNote"
-             class="button is-link has-background-grey-dark">
+    <AddEditNote
+     v-model="newNote"
+     ref="addEditNoteRef">
+      <template #buttons>
+        <button 
+         @click="addNote"
+         class="button is-link has-background-grey-dark">
               Adicionar
-            </button>
-          </div>
-        </div>
-    </div>
+              {{ newNote }}
+        </button>
+        <!-- <button 
+         @click="addNote"
+         :disabled="!newNote"
+         class="button is-link has-background-grey-dark">
+              Adicionar
+              {{ newNote }}
+        </button> -->
+      </template>
+    </AddEditNote>
+
     <Note
      v-for='note in storeNotes.notes'
      :key='note.id'
@@ -36,16 +31,17 @@
 <script setup>
 import { ref } from 'vue';
 import Note from '../components/Notes/Note.vue';
+import AddEditNote from '../components/Notes/AddEditNote.vue';
 import { useStoreNotes } from '../stores/storeNotes';
 
 const storeNotes = useStoreNotes();
 
 const newNote = ref('');
-const newNoteRef = ref(null);
+const addEditNoteRef = ref(null)
 
 const addNote = () => {
     storeNotes.addNote(newNote.value);
     newNote.value = '';
-    newNoteRef.value.focus();
+    addEditNoteRef.value.focusTextArea();
 }
 </script>

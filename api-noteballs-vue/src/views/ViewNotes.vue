@@ -10,13 +10,6 @@
          class="button is-link has-background-grey-dark">
               Adicionar
         </button>
-        <!-- <button 
-         @click="addNote"
-         :disabled="!newNote"
-         class="button is-link has-background-grey-dark">
-              Adicionar
-              {{ newNote }}
-        </button> -->
       </template>
     </AddEditNote>
 

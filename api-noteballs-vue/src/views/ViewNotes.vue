@@ -6,9 +6,9 @@
       <template #buttons>
         <button 
          @click="addNote"
+         :disabled="!newNote"
          class="button is-link has-background-grey-dark">
               Adicionar
-              {{ newNote }}
         </button>
         <!-- <button 
          @click="addNote"

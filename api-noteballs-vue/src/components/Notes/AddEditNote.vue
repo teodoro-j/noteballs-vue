@@ -9,8 +9,8 @@
     <div class="field">
       <div class="control">
         <textarea
-          :v-model="modelValue"
-          @input="$emit('update:modelValue', modelValue)"
+          v-model="valueText"
+          @input="$emit('update:modelValue', valueText)"
           class="textarea"
           placeholder="Nova nota"
           ref="textareaRef"
@@ -46,6 +46,8 @@ const props = defineProps({
 })
 
 const textareaRef = ref(null);
+
+const valueText = ref(props.modelValue);
 
 const emit = defineEmits(['update:modelValue'])
 

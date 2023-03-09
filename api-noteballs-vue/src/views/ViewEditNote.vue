@@ -34,7 +34,7 @@ const route = useRoute();
 const router = useRouter();
 
 
-const noteContent = ref('asdsad')
+const noteContent = ref('')
 
 const storeNotes = useStoreNotes();
 

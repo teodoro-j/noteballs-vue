@@ -18,8 +18,13 @@
         </div>
       </div>
       <footer class="card-footer">
-        <a href="#" class="card-footer-item">Editar</a>
-        <a 
+        <RouterLink
+         href="#" 
+        :to="`/editNote/${ note.id }`"
+         class="card-footer-item">
+             Editar
+        </RouterLink>
+        <a  
          @click.prevent="storeNotes.deleteNote(note.id)"
          href="#" 
          class="card-footer-item"
@@ -31,7 +36,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStoreNotes } from '../../stores/storeNotes';
 
 const storeNotes = useStoreNotes();
@@ -41,6 +46,10 @@ const props = defineProps({
         type: Object,
         required: true,
     }
+})
+
+onMounted(() => {
+  console.log(props.note)
 })
 
 const characterLength = computed(() => {

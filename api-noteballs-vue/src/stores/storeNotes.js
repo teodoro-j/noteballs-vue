@@ -15,7 +15,7 @@ export const useStoreNotes = defineStore('storeNotes', {
     },
     actions: {
         async getNotes() {
-            const querySnapshot = await getDocs(collection(db, "notes"));
+            const querySnapshot = await getDocs(collection(db, "users", "dbeqP54N9AelHV10uHT5JZflwAv1","notes"));
             querySnapshot.forEach((doc) => {
                 console.log(doc.id, " => ", doc.data());
                 let note = {

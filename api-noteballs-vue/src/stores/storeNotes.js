@@ -13,6 +13,13 @@ export const useStoreNotes = defineStore('storeNotes', {
             ]
         }
     },
+    getters: {
+      getNoteContent: (state) => {
+          return (id) => {
+              return state.notes.filter(note => { return note.id === id})[0].content
+          }
+      }
+    },
     actions: {
         async getNotes() {
             const querySnapshot = await getDocs(collection(db, "users", "dbeqP54N9AelHV10uHT5JZflwAv1","notes"));
@@ -47,11 +54,4 @@ export const useStoreNotes = defineStore('storeNotes', {
             this.notes[index].content = content;
         }
       },
-      getters: {
-        getNoteContent: (state) => {
-            return (id) => {
-                return state.notes.filter(note => { return note.id === id})[0].content
-            }
-        }
-      }
 })

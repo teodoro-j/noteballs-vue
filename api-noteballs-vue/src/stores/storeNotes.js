@@ -54,4 +54,5 @@ export const useStoreNotes = defineStore('storeNotes', {
             this.notes[index].content = content;
         }
       },
+      persist: true,
 })

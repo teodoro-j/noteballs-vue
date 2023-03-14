@@ -13,9 +13,9 @@
           aria-expanded="false"
           data-target="navbarBasicExample"
         >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+          <span aria-hidden="true" class="menu-bar"></span>
+          <span aria-hidden="true" class="menu-bar"></span>
+          <span aria-hidden="true" class="menu-bar"></span>
         </a>
       </div>
 
@@ -79,5 +79,9 @@ const logout = () => {
     left: 0;
     width: 100%;
   }
+}
+
+.menu-bar {
+  background-color: rgb(28, 146, 210) !important;
 }
 </style>

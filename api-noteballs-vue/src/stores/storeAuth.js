@@ -45,4 +45,5 @@ export const useStoreAuth = defineStore('storeAuth', {
             });
         }
     },
+    persist: true,
 })
